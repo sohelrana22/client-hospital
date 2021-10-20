@@ -18,10 +18,7 @@ const Contact = () => {
   function ContactForm() {
     return (
       <div style={{ padding: "58px 0 40px" }}>
-           <div className="container mb-4 w-100 h-100">
-           <img src={map}  alt="" />
           
-           </div>
         <Bounce right>
           <h2 className="text-center text-white">Contact Us</h2>
         </Bounce>
@@ -88,6 +85,10 @@ const Contact = () => {
             </Slide>
           </Container>
         </div>
+        <div className="container mb-4 w-100 h-100">
+           <img src={map}  alt="" />
+          
+           </div>
       </div>
     );
 };

@@ -11,11 +11,11 @@ const Footer = () => {
            </div>
            <div className="container row col-6 p-5 text-white">
                <h2>Opening Hours</h2>
-               <h5>Monday:00.01 am - 23.59 pm</h5>
-               <h5>Tuesday:00.01 am - 23.59 pm</h5>
-               <h5>Wednesday:00.01 am - 23.59 pm</h5>
-               <h5>Thursday:00.01 am - 23.59 pm</h5>
-               <h5>Friday:00.01 am - 23.59 pm</h5>
+               <h5>Monday:     00.01 am - 23.59 pm</h5>
+               <h5>Tuesday:    00.01 am - 23.59 pm</h5>
+               <h5>Wednesday:  00.01 am - 23.59 pm</h5>
+               <h5>Thursday:   00.01 am - 23.59 pm</h5>
+               <h5>Friday:     00.01 am - 23.59 pm</h5>
            </div>
           
         </div>

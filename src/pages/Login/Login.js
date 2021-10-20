@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
 import { NavLink, useLocation, useHistory } from "react-router-dom";
 import google from "./../../assets/images/google.png";
+import './Login.css'
 
 
 const Login = () => {
@@ -25,21 +26,19 @@ const Login = () => {
   } = AllContexts;
 
   return (
-    <div className="text-center my-4">
-      <h2>Please Login</h2>
-      <p className=" mt-2">Login with Email & Password</p>
+    <div className="text-center login p-4">
+      <h2 className="text-white">Please Login</h2>
+      <p className=" mt-2 text-white">Login with Email & Password</p>
       <p className="text-danger text-center">{error}</p>
       <div className="w-25 mx-auto">
         <Form
-          onSubmit={() => {
+          onSubmit={(e) => {
+            e.preventDefault()
             signInWithEmail()
               .then((result) => {
-                setUser(result.user);
+                setUser(result?.user);
                 history.push(redirect);
               })
-              .catch((error) => {
-                setError(error.message);
-              });
           }}
         >
           <Row>
@@ -81,33 +80,32 @@ const Login = () => {
             </Col>
           </Row>
 
-          <button type="submit" className="btn btn-primary mt-2 w-100">
+          <button type="submit" className="btn btn-success mt-2 w-100">
             Login
           </button>
         </Form>
       </div>
       <p className="mt-2">
-        <NavLink className="text-decoration-none" to="/signup">
-          Need an Account? Please Sign up!
+        <NavLink className="text-decoration-none text-white" to="/register">
+          Need an Account? Please Register!
         </NavLink>
         <br />
-        <NavLink className="text-decoration-none" to="/reset">
+        <NavLink className="text-decoration-none text-white" to="/reset">
           Forget password? Reset!
         </NavLink>
       </p>
-      <p className="mt-3">Or</p>
-      <p> Login with</p>
+      <p className="mt-3 text-white">Or</p>
+      <p className="text-white"> Login with</p>
       <div>
         <button
-          onClick={() => {
+          onClick={(e) => {
+            e.preventDefault()
             signInWithGoogle()
               .then((result) => {
-                setUser(result.user);
+                setUser(result?.user);
                 history.push(redirect);
               })
-              .catch((error) => {
-                setError(error.message);
-              });
+              
           }}
           className="btn"
         >

@@ -7,6 +7,7 @@ import sectionBg from "./../../assets/images/sectionBg.png";
 
 const Services = () => {
     const {services} = useAuth()
+    const service = services.slice(0, 12);
     return (
         <div className="py-5"  style={{ background: `url(${sectionBg})`, backgroundAttachment: "fixed" }}
         >
@@ -22,7 +23,7 @@ const Services = () => {
           <Container>
               <div className="my-3 d-flex flex-wrap justify-content-between">
                   {
-                      services.map((service) => (<Service key={service.key}  service={service} />
+                      service.map((service) => (<Service key={service.key}  service={service} />
                         ))}
               </div>
           </Container>

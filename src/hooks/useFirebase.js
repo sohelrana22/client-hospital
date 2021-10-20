@@ -1,4 +1,13 @@
-import { GoogleAuthProvider, getAuth, signInWithPopup, onAuthStateChanged, signOut, signInWithEmailAndPassword  } from "firebase/auth";
+import {
+     GoogleAuthProvider,
+     getAuth,
+      signInWithPopup,
+       onAuthStateChanged,
+        signOut,
+        createUserWithEmailAndPassword, 
+        signInWithEmailAndPassword,
+        updateProfile
+     } from "firebase/auth";
 import { useEffect, useState } from "react";
 import initializeAuthentication from './../Firebase/firebase.init';
 
@@ -9,29 +18,19 @@ const auth = getAuth();
 const useFirebase = () => {
 const [user, setUser] = useState({})
 const [error, setError] = useState("")
+const [name, setName] = useState("")
 const [email, setEmail] = useState("")
 const [password, setPassword] = useState("")
 
     // google sign in
     function signInWithGoogle() {
-        signInWithPopup(auth, googleProvider)
-        .then(result => {
-            setUser(result.user)
-        }).catch(error => {
-            setError(error.message)
-        })
+     return   signInWithPopup(auth, googleProvider)
     }
 
     // email and password sign in
-    function signInWithEmail(e) {
-        e.preventDefault();
-        console.log( email, password)
-        signInWithEmailAndPassword (auth, email, password)
-        .then(result => {
-            setUser(result.user)
-        }).catch(error => {
-            setError(error.message)
-        })
+    function signInWithEmail() {
+       return signInWithEmailAndPassword (auth, email, password)
+        
     }
 
 
@@ -49,12 +48,26 @@ const [password, setPassword] = useState("")
     // sign out
     function logOut () {
         signOut(auth)
-        .then(() => {
-          
+        .then((result) => {
+            setUser({})
+          alert('logout')
           })
           .catch((error) => {
             setError(error.message);
           });
+    }
+
+    // Register with email and password
+    function signUp(e){
+        e.preventDefault()
+        createUserWithEmailAndPassword(auth, email, password)
+        .then(result => {
+            setName()
+            alert('user has been created')
+        })
+        .catch(error =>{
+            setError(error.message);
+        })
     }
 
 // getEmail
@@ -62,20 +75,38 @@ const [password, setPassword] = useState("")
 function getEmail(e) {
     setEmail(e?.target?.value)
 }
+// get name
+function getName(e) {
+    setName(e?.target?.value)
+}
 // getPassword
 
 function getPassword(e) {
     setPassword(e?.target?.value)
 }
 
+function signUpWithEmail(){
+    return createUserWithEmailAndPassword(auth,email,password)
+}
+function setUserName(){
+    updateProfile(auth.currentUser, {
+        displayName: name
+      })
+}
     return {
         signInWithGoogle,
-        signInWithEmail,
+        signUpWithEmail,
         logOut,
         getPassword,
         getEmail,
         user,
         error,
+        signUp,
+        setUser,
+        setError,
+        getName,
+        setUserName,
+        signInWithEmail
     };
 };
 

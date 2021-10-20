@@ -1,7 +1,5 @@
-.text{
-    color: white;
-}
-.home-service{
+.doctor{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    
 }

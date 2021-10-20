@@ -20,16 +20,19 @@ const Header = () => {
       <Nav className="ms-auto">
         <Nav.Link as={NavLink} className="text-white" to="/home">Home</Nav.Link>
         <Nav.Link as={NavLink} className="text-white" to="/services">Services</Nav.Link>
+        <Nav.Link as={NavLink} className="text-white" to="/doctor">Doctor</Nav.Link>
         <Nav.Link as={NavLink} className="text-white" to="/about">About</Nav.Link>
         <Nav.Link as={NavLink} className="text-white" to="/contact">Contact us</Nav.Link>
-      {!user.displayName ?  (<>
+      {!user.email ?  (<>
         <Nav.Link as={NavLink} className="text-white" to="/login">Login</Nav.Link>
         <Nav.Link as={NavLink} className="text-white" to="/register">Register</Nav.Link>
         </>
         ) : (
          <>
              <span className="text-white align-items-center mt-2">{user.displayName}</span>
-          <Nav.Link as={NavLink} className="text-white" to="/logout">Logout</Nav.Link>
+          <Nav.Link className="text-white ">
+            <button onClick={logOut} className="btn btn-info p-1">Logout</button>
+          </Nav.Link>
          </>
         )}
       </Nav>

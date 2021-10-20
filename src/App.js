@@ -15,7 +15,7 @@ import AuthProvider from './contexts/AuthProvider';
 import Footer from './components/Footer/Footer';
 import Details from './pages/Details/Details';
 import PrivateRoute from './route/PrivateRoute';
-import LogOut from './pages/LogOut/LogOut';
+import Doctor from './pages/Doctor/Doctor';
 
 function App() {
   return (
@@ -30,15 +30,15 @@ function App() {
           <Route path='/home'>
             <Home></Home>
           </Route>
-          <Route path='/logout'>
-            <LogOut></LogOut>
-          </Route>
           <Route path='/about'>
             <About></About>
           </Route>
-          <Route path='/contact'>
+          <PrivateRoute path='/contact'>
             <Contact></Contact>
-          </Route>
+          </PrivateRoute>
+          <PrivateRoute path='/doctor'>
+            <Doctor></Doctor>
+          </PrivateRoute>
           <Route path='/login'>
             <Login></Login>
           </Route>
@@ -48,9 +48,9 @@ function App() {
           <PrivateRoute exact path='/services'>
             <Services></Services>
           </PrivateRoute>
-          <Route path='/services/:key'>
+          <PrivateRoute path='/services/:key'>
             <Details></Details>
-          </Route>
+          </PrivateRoute>
           <Route path='/register'>
             <Register></Register>
           </Route>
