@@ -21,6 +21,7 @@ const [error, setError] = useState("")
 const [name, setName] = useState("")
 const [email, setEmail] = useState("")
 const [password, setPassword] = useState("")
+const [isLoading, setIsLoading] = useState(true);
 
     // google sign in
     function signInWithGoogle() {
@@ -41,6 +42,7 @@ const [password, setPassword] = useState("")
             if (signedInUser) {
                 setUser(signedInUser);
             } 
+            setIsLoading(false)
           });
           return () => unsubscribe;
     },[]);
@@ -97,6 +99,7 @@ function setUserName(){
         signInWithGoogle,
         signUpWithEmail,
         logOut,
+        isLoading,
         getPassword,
         getEmail,
         user,
