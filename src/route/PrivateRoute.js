@@ -14,7 +14,7 @@ function PrivateRoute({ children, ...rest }) {
       <Route
         {...rest}
         render={({ location }) =>
-          AllContexts?.user?.displayName ? (
+          AllContexts?.user?.email ? (
             children
           ) : (
             <Redirect

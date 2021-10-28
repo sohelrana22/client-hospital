@@ -16,6 +16,7 @@ import Footer from './components/Footer/Footer';
 import Details from './pages/Details/Details';
 import PrivateRoute from './route/PrivateRoute';
 import Doctor from './pages/Doctor/Doctor';
+import AddService from './pages/AddService/AddService';
 
 function App() {
   return (
@@ -39,6 +40,9 @@ function App() {
           <PrivateRoute path='/doctor'>
             <Doctor></Doctor>
           </PrivateRoute>
+          <Route path="/addService">
+            <AddService></AddService>
+          </Route>
           <Route path='/login'>
             <Login></Login>
           </Route>

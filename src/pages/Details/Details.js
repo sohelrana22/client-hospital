@@ -6,7 +6,7 @@ import useAuth from '../../hooks/useAuth';
 const Details = () => {
     const {key} = useParams();
     const {services} = useAuth()
-const detailService = services.find(service => service.key === Number(key));
+const detailService = services.find(service => service._id === Number(key));
 const {img, name, detail} = detailService;
 
 
